@@ -27,6 +27,10 @@ public class TgValorRestaItem extends SifenObjectBase {
     public TgValorRestaItem() {
         this.dDescItem = BigDecimal.ZERO;
         this.dDescGloItem = BigDecimal.ZERO;
+        
+        this.dAntPreUniIt = BigDecimal.ZERO;
+        this.dAntGloPreUniIt = BigDecimal.ZERO;
+        
     }
 
     public void setupSOAPElements(SOAPElement gValorItem, TTiDE iTiDE, TTImp iTImp, TdCondTiCam dCondTiCam, BigDecimal dTiCamIt,

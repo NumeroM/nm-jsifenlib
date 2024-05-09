@@ -92,7 +92,7 @@ public class TgCamItem extends SifenObjectBase {
         if ((iTiDE.getVal() == 7 && this.cRelMerc != null) || this.dPorQuiMer != null)
             gCamItem.addChildElement("dPorQuiMer").setTextContent(String.valueOf(this.dPorQuiMer));
 
-        if ((iTipTra != null && iTipTra.getVal() == 9) || this.dCDCAnticipo != null)
+        if ((iTipTra != null && iTipTra.getVal() == 9) && this.dCDCAnticipo != null || this.dCDCAnticipo != null)
             gCamItem.addChildElement("dCDCAnticipo").setTextContent(this.dCDCAnticipo);
 
         if (iTiDE.getVal() != 7) {

@@ -52,7 +52,7 @@ abstract class BaseRequest {
             }
 
             String xml = sw.toString();
-            logger.info("Este es el xml a enviarse a la SIFEN \n" + xml);
+          //  logger.info("Este es el xml a enviarse a la SIFEN \n" + xml);
 //            System.out.println(xml);
             // Realizamos la consulta
             String requestUrl = SifenUtil.coalesce(sifenConfig.getUrlBase(), sifenConfig.getUrlBaseLocal()) + url;

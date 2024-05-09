@@ -92,8 +92,8 @@ public class TgTotSub extends SifenObjectBase {
             this.dTotDesc = this.dTotDesc.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdDescItem().multiply(gCamItem.getdCantProSer()), BigDecimal.ZERO));
             this.dTotDescGlotem = this.dTotDescGlotem.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdDescGloItem().multiply(gCamItem.getdCantProSer()), BigDecimal.ZERO));
             //this.dTotDescGlotem = this.dTotDescGlotem.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdDescGloItem(), BigDecimal.ZERO));
-            this.dTotAntItem = this.dTotAntItem.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdAntPreUniIt(), BigDecimal.ZERO));
-            this.dTotAnt = this.dTotAnt.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdAntGloPreUniIt(), BigDecimal.ZERO));
+            this.dTotAntItem = this.dTotAntItem.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdAntPreUniIt().multiply(gCamItem.getdCantProSer()), BigDecimal.ZERO));
+            this.dTotAnt = this.dTotAnt.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdAntGloPreUniIt().multiply(gCamItem.getdCantProSer()), BigDecimal.ZERO));
 
             if (!cMoneOpe.name().equals("PYG") && dCondTiCam.getVal() == 2)
                 this.dTotalGs = this.dTotalGs.add(gCamItem.getgValorItem().getgValorRestaItem().getdTotOpeGs());
