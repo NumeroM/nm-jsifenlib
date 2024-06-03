@@ -44,6 +44,8 @@ public class TgTotSub extends SifenObjectBase {
     private BigDecimal dBaseGrav10 = BigDecimal.ZERO;
     private BigDecimal dTBasGraIVA = BigDecimal.ZERO;
     private BigDecimal dTotalGs = BigDecimal.ZERO;
+    
+    public Boolean redon = true;
 
     public void setupSOAPElements(SOAPElement DE, TTiDE iTiDE, TgDtipDE gDtipDE, TgOpeCom gOpeCom) throws SOAPException {
         resetValues();
@@ -105,8 +107,9 @@ public class TgTotSub extends SifenObjectBase {
         this.dDescTotal = this.dTotDesc.add(this.dTotDescGlotem);
         this.dPorcDescTotal = this.dTotDescGlotem.multiply(BigDecimal.valueOf(100)).divide(this.dTotOpe.add(this.dDescTotal), 2, RoundingMode.HALF_UP);
         this.dAnticipo = this.dTotAntItem.add(this.dTotAnt);
-
-        this.dRedon = RedondeoUtil.redondeoOficialSET(cMoneOpe, this.dTotOpe);
+        if (this.redon){
+            this.dRedon = RedondeoUtil.redondeoOficialSET(cMoneOpe, this.dTotOpe);
+        }
         this.dTotGralOpe = this.dTotOpe.subtract(this.dRedon).add(SifenUtil.coalesce(this.dComi, BigDecimal.ZERO));
         this.dRedon = this.dRedon.abs();
 
@@ -389,4 +392,16 @@ public class TgTotSub extends SifenObjectBase {
     public BigDecimal getdTotalGs() {
         return dTotalGs;
     }
+
+    public Boolean getRedon() {
+        return redon;
+    }
+
+    public void setRedon(Boolean redon) {
+        this.redon = redon;
+    }
+
+   
+    
+    
 }
