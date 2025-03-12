@@ -19,6 +19,7 @@ public class TgGrupAdi extends SifenObjectBase {
     private List<LocalDate> dVencPagList;
     private String dContrato;
     private BigDecimal dSalAnt;
+    private String dCodConDncp;
 
     public void setupSOAPElements(SOAPElement gCamEsp) throws SOAPException {
         SOAPElement gGrupAdi = gCamEsp.addChildElement("gGrupAdi");
@@ -39,6 +40,11 @@ public class TgGrupAdi extends SifenObjectBase {
 
         if (this.dSalAnt != null)
             gGrupAdi.addChildElement("dSalAnt").setTextContent(String.valueOf(this.dSalAnt));
+        
+        if (this.dCodConDncp != null)
+            gGrupAdi.addChildElement("dCodConDncp").setTextContent(String.valueOf(this.dCodConDncp));
+        
+        
     }
 
     @Override
@@ -65,6 +71,8 @@ public class TgGrupAdi extends SifenObjectBase {
             case "dSalAnt":
                 this.dSalAnt = new BigDecimal(ResponseUtil.getTextValue(value));
                 break;
+            case "dCodConDncp":
+                this.dCodConDncp = ResponseUtil.getTextValue(value);
         }
     }
 
@@ -115,4 +123,14 @@ public class TgGrupAdi extends SifenObjectBase {
     public void setdSalAnt(BigDecimal dSalAnt) {
         this.dSalAnt = dSalAnt;
     }
+
+    public String getdCodConDncp() {
+        return dCodConDncp;
+    }
+
+    public void setdCodConDncp(String dCodConDncp) {
+        this.dCodConDncp = dCodConDncp;
+    }
+    
+    
 }
