@@ -45,7 +45,7 @@ public class DETest extends DETestBase {
         // Grupo C
         TgTimb gTimb = new TgTimb();
         gTimb.setiTiDE(TTiDE.FACTURA_ELECTRONICA);
-        gTimb.setdNumTim(12557662);
+        gTimb.setdNumTim("12557662");
         gTimb.setdEst("001");
         gTimb.setdPunExp("002");
         gTimb.setdNumDoc("0000007");
@@ -78,12 +78,12 @@ public class DETest extends DETestBase {
         List<TgActEco> gActEcoList = new ArrayList<>();
         TgActEco gActEco = new TgActEco();
         gActEco.setcActEco("69209");
-        gActEco.setdDesActEco("ACTIVIDADES DE CONTABILIDAD, TENEDUR√çA DE LIBROS, AUDITORIA Y ASESORIA FISCAL N.C.P.");
+        gActEco.setdDesActEco("ACTIVIDADES DE CONTABILIDAD, TENEDUR√?A DE LIBROS, AUDITORIA Y ASESORIA FISCAL N.C.P.");
         gActEcoList.add(gActEco);
 
         TgActEco gActEco2 = new TgActEco();
         gActEco2.setcActEco("62090");
-        gActEco2.setdDesActEco("OTRAS ACTIVIDADES DE TECNOLOG√çA DE LA INFORMACI√ìN Y SERVICIOS INFORM√ÅTICOS");
+        gActEco2.setdDesActEco("OTRAS ACTIVIDADES DE TECNOLOG√?A DE LA INFORMACI√ìN Y SERVICIOS INFORM√?TICOS");
         gActEcoList.add(gActEco2);
 
         gEmis.setgActEcoList(gActEcoList);
@@ -225,7 +225,7 @@ public class DETest extends DETestBase {
         // Grupo C
         TgTimb gTimb = new TgTimb();
         gTimb.setiTiDE(TTiDE.FACTURA_ELECTRONICA);
-        gTimb.setdNumTim(12557662);
+        gTimb.setdNumTim("12557662");
         gTimb.setdEst("001");
         gTimb.setdPunExp("002");
         gTimb.setdNumDoc("0000008");
@@ -258,12 +258,12 @@ public class DETest extends DETestBase {
         List<TgActEco> gActEcoList = new ArrayList<>();
         TgActEco gActEco = new TgActEco();
         gActEco.setcActEco("69209");
-        gActEco.setdDesActEco("ACTIVIDADES de CONTABILIDAD, TENEDUR√çA de LIBROS, AUDITORIA Y ASESORIA FISCAL N.C.P.");
+        gActEco.setdDesActEco("ACTIVIDADES de CONTABILIDAD, TENEDUR√?A de LIBROS, AUDITORIA Y ASESORIA FISCAL N.C.P.");
         gActEcoList.add(gActEco);
 
         TgActEco gActEco2 = new TgActEco();
         gActEco2.setcActEco("62090");
-        gActEco2.setdDesActEco("OTRAS ACTIVIDADES de TECNOLOG√çA de LA INFORMACI√ìN Y SERVICIOS INFORM√ÅTICOS");
+        gActEco2.setdDesActEco("OTRAS ACTIVIDADES de TECNOLOG√?A de LA INFORMACI√ìN Y SERVICIOS INFORM√?TICOS");
         gActEcoList.add(gActEco2);
 
         gEmis.setgActEcoList(gActEcoList);

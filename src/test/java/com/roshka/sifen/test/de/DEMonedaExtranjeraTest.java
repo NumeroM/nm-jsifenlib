@@ -37,7 +37,7 @@ public class DEMonedaExtranjeraTest extends DETestBase {
         // Grupo C
         TgTimb gTimb = new TgTimb();
         gTimb.setiTiDE(TTiDE.FACTURA_ELECTRONICA);
-        gTimb.setdNumTim(12557605);
+        gTimb.setdNumTim("12557605");
         gTimb.setdEst("001");
         gTimb.setdPunExp("002");
         gTimb.setdNumDoc("0000008");
@@ -78,7 +78,7 @@ public class DEMonedaExtranjeraTest extends DETestBase {
         List<TgActEco> gActEcoList = new ArrayList<>();
         TgActEco gActEco = new TgActEco();
         gActEco.setcActEco("62010");
-        gActEco.setdDesActEco("ACTIVIDADES de PROGRAMACIÓN INFORMÁTICA");
+        gActEco.setdDesActEco("ACTIVIDADES de PROGRAMACIÓN INFORM�?TICA");
         gActEcoList.add(gActEco);
 
         gEmis.setgActEcoList(gActEcoList);
