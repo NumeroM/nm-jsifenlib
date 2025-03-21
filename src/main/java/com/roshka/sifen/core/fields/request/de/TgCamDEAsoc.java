@@ -29,6 +29,7 @@ public class TgCamDEAsoc extends SifenObjectBase {
     private TdTipCons iTipCons;
     private BigInteger dNumCons;
     private String dNumControl;
+    private String dRucFus;
 
     public void setupSOAPElements(SOAPElement DE, TTipTra iTipTra, boolean withholdingExists) throws SOAPException {
         SOAPElement gCamDEAsoc = DE.addChildElement("gCamDEAsoc");
@@ -60,6 +61,9 @@ public class TgCamDEAsoc extends SifenObjectBase {
 
         if (withholdingExists)
             gCamDEAsoc.addChildElement("dNumComRet").setTextContent(this.dNumComRet);
+        
+        if (this.dRucFus != null)
+            gCamDEAsoc.addChildElement("dRucFus").setTextContent(this.dRucFus);
     }
 
     @Override
@@ -103,6 +107,9 @@ public class TgCamDEAsoc extends SifenObjectBase {
                 break;
             case "dNumComRet":
                 this.dNumComRet = ResponseUtil.getTextValue(value);
+                break;
+            case "dRucFus":
+                this.dRucFus = ResponseUtil.getTextValue(value);
                 break;
         }
     }
@@ -210,4 +217,14 @@ public class TgCamDEAsoc extends SifenObjectBase {
     public void setdNumControl(String dNumControl) {
         this.dNumControl = dNumControl;
     }
+
+    public String getdRucFus() {
+        return dRucFus;
+    }
+
+    public void setdRucFus(String dRucFus) {
+        this.dRucFus = dRucFus;
+    }
+    
+    
 }
