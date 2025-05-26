@@ -62,7 +62,7 @@ public class TgTotSub extends SifenObjectBase {
         // CALCULOS
         for (TgCamItem gCamItem : gDtipDE.getgCamItemList()) {
             TgCamIVA gCamIVA = gCamItem.getgCamIVA();
-            BigDecimal dTotOpeItem = gCamItem.getgValorItem().getgValorRestaItem().getdTotOpeItem();
+            BigDecimal dTotOpeItem = gCamItem.getgValorItem().getgValorRestaItem().getdTotOpeItem().subtract(gCamIVA.getdBasExe());
 
             dTotOpeItem = dTotOpeItem.setScale(scale, RoundingMode.HALF_UP);
             if (gCamIVA != null) {
@@ -81,11 +81,16 @@ public class TgTotSub extends SifenObjectBase {
                         this.dBaseGrav5 = this.dBaseGrav5.add(dBasGravIVA);
                         this.dLiqTotIVA5 = BigDecimal.ZERO;
                     }
+                    
+                    this.dSubExe = this.dSubExe.add(gCamIVA.getdBasExe());
+                    
                 } else if (gCamIVA.getiAfecIVA().getVal() == 2) {
                     this.dSubExo = this.dSubExo.add(dTotOpeItem);
                 } else if (gCamIVA.getiAfecIVA().getVal() == 3) {
                     this.dSubExe = this.dSubExe.add(dTotOpeItem);
-                }
+                } 
+                
+               
             }
 
             if (iTiDE.getVal() == 4)
@@ -401,7 +406,4 @@ public class TgTotSub extends SifenObjectBase {
         this.redon = redon;
     }
 
-   
-    
-    
 }

@@ -31,15 +31,25 @@ public class TgCamIVA extends SifenObjectBase {
         dTotOpeItem = dTotOpeItem.setScale(scale, RoundingMode.HALF_UP);
 
         BigDecimal hundred = BigDecimal.valueOf(100);
-        BigDecimal propIVA = this.dPropIVA.divide(hundred, scale, RoundingMode.HALF_UP);
-        if (this.iAfecIVA.getVal() == 1 || this.iAfecIVA.getVal() == 4) {
-            if (this.dTasaIVA.equals(BigDecimal.valueOf(10))) {
-                this.dBasGravIVA = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(1.1), scale, RoundingMode.HALF_UP);
-                this.dLiqIVAItem = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(11), scale, RoundingMode.HALF_UP);
+        //BigDecimal propIVA = this.dPropIVA.divide(hundred, scale, RoundingMode.HALF_UP);
+        
+        int effectiveScale = (this.iAfecIVA.getVal() == TiAfecIVA.GRAVADO_PARCIAL.getVal()) ? 2 : scale;
+        BigDecimal propIVA = this.dPropIVA.divide(hundred, effectiveScale, RoundingMode.HALF_UP);
+        
+        if (this.iAfecIVA.getVal() == TiAfecIVA.GRAVADO.getVal() || this.iAfecIVA.getVal() == TiAfecIVA.GRAVADO_PARCIAL.getVal()) {
+            
+            this.dBasGravIVA = (dTotOpeItem.multiply(hundred).multiply(dPropIVA)).divide((dTasaIVA.multiply(dPropIVA)).add(BigDecimal.valueOf(10000)),scale, RoundingMode.HALF_UP);
+            this.dLiqIVAItem = this.dTasaIVA.divide(hundred).multiply(this.dBasGravIVA).setScale(scale, RoundingMode.HALF_UP);
+          
+             /* if (this.dTasaIVA.equals(BigDecimal.valueOf(10))) {
+               // this.dBasGravIVA = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(1.1), scale, RoundingMode.HALF_UP);
+                //this.dLiqIVAItem = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(11), scale, RoundingMode.HALF_UP);
+                
+               
             } else if (this.dTasaIVA.equals(BigDecimal.valueOf(5))) {
-                this.dBasGravIVA = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(1.05), scale, RoundingMode.HALF_UP);
+               // this.dBasGravIVA = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(1.05), scale, RoundingMode.HALF_UP);
                 this.dLiqIVAItem = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(21), scale, RoundingMode.HALF_UP);
-            }
+            }*/
         } else {
             this.dBasGravIVA = BigDecimal.ZERO;
             this.dLiqIVAItem = BigDecimal.ZERO;
