@@ -21,7 +21,8 @@ public class TgCompPub extends SifenObjectBase {
         gCompPub.addChildElement("dModCont").setTextContent(this.dModCont);
         gCompPub.addChildElement("dEntCont").setTextContent(String.valueOf(this.dEntCont));
         gCompPub.addChildElement("dAnoCont").setTextContent(String.valueOf(this.dAnoCont));
-        gCompPub.addChildElement("dSecCont").setTextContent(String.valueOf(this.dSecCont));
+        //gCompPub.addChildElement("dSecCont").setTextContent(String.valueOf(this.dSecCont));
+        gCompPub.addChildElement("dSecCont").setTextContent(String.format("%07d", this.dSecCont));
         gCompPub.addChildElement("dFeCodCont").setTextContent(this.dFeCodCont.toString());
     }
 
