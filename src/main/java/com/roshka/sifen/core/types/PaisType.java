@@ -997,6 +997,10 @@ public enum PaisType {
      */
     WLF("Islas Wallis y Futuna"),
     /**
+     * Taiwán (Provincia de China)
+     */
+    TWN("Taiwán (Provincia de China)"),
+	/**
      * NO EXISTE
      */
     NN("NO EXISTE");
