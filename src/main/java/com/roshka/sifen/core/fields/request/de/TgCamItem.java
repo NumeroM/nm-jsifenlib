@@ -57,7 +57,7 @@ public class TgCamItem extends SifenObjectBase {
         if (this.dNCM != 0)
             gCamItem.addChildElement("dNCM").setTextContent(String.valueOf(this.dNCM));
 
-        if (this.dDncpG != null || iTiOpe.getVal() == 3) {
+        if (this.dDncpG != null) {
             gCamItem.addChildElement("dDncpG").setTextContent(this.dDncpG);
             gCamItem.addChildElement("dDncpE").setTextContent(this.dDncpE);
         }
