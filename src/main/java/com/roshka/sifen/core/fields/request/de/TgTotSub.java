@@ -45,7 +45,7 @@ public class TgTotSub extends SifenObjectBase {
     private BigDecimal dTBasGraIVA = BigDecimal.ZERO;
     private BigDecimal dTotalGs = BigDecimal.ZERO;
     
-    public Boolean redon = true;
+    private Boolean redon = true;
 
     public void setupSOAPElements(SOAPElement DE, TTiDE iTiDE, TgDtipDE gDtipDE, TgOpeCom gOpeCom) throws SOAPException {
         resetValues();
@@ -62,8 +62,21 @@ public class TgTotSub extends SifenObjectBase {
         // CALCULOS
         for (TgCamItem gCamItem : gDtipDE.getgCamItemList()) {
             TgCamIVA gCamIVA = gCamItem.getgCamIVA();
-            BigDecimal dTotOpeItem = gCamItem.getgValorItem().getgValorRestaItem().getdTotOpeItem().subtract(gCamIVA.getdBasExe());
-
+           // BigDecimal dTotOpeItem = gCamItem.getgValorItem().getgValorRestaItem().getdTotOpeItem().subtract(gCamIVA.getdBasExe());
+           
+            BigDecimal dTotOpeItem = null;
+            
+            if (gCamIVA != null){
+                
+                dTotOpeItem = gCamItem.getgValorItem().getgValorRestaItem().getdTotOpeItem().subtract(gCamIVA.getdBasExe());
+                        
+            }else{
+                
+                dTotOpeItem = gCamItem.getgValorItem().getgValorRestaItem().getdTotOpeItem();
+                
+            }
+            
+            
             dTotOpeItem = dTotOpeItem.setScale(scale, RoundingMode.HALF_UP);
             if (gCamIVA != null) {
                 BigDecimal dLiqIVAItem = gCamIVA.getdLiqIVAItem();
