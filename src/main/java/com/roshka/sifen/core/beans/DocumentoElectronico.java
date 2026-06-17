@@ -153,6 +153,8 @@ public class DocumentoElectronico extends SifenObjectBase {
 //    se agrego un overload del metodo obtener CDC para que reciba el parametro ReceivedCDC
     public String obtenerCDC(String ReceivedCDC) throws SifenException {
         this.Id = ReceivedCDC;
+        this.dDVId = ReceivedCDC.substring(43,44);
+        this.getgOpeDE().setdCodSeg(ReceivedCDC.substring(34, 43));
         return this.Id;
     }
 //            FIN CAMBIO
@@ -329,7 +331,12 @@ public class DocumentoElectronico extends SifenObjectBase {
 
     //    FIN CAMBIO
     public void setupDE(GenerationCtx generationCtx, SOAPElement parentNode, SifenConfig sifenConfig) throws SOAPException, SifenException {
-        this.setupDE(generationCtx, parentNode, sifenConfig, this.obtenerCDC());
+        
+        if (this.Id != null){
+            this.setupDE(generationCtx, parentNode, sifenConfig, this.Id);
+        }else{
+            this.setupDE(generationCtx, parentNode, sifenConfig, this.obtenerCDC());
+        }
     }
 
     /**
@@ -425,6 +432,12 @@ public class DocumentoElectronico extends SifenObjectBase {
         Id = id;
     }
 
+    public void setdDVId(String dDVId){
+    
+        this.dDVId = dDVId;
+        
+    }
+    
     public String getdDVId() {
         return dDVId;
     }

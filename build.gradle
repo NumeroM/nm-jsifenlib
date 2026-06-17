@@ -5,7 +5,7 @@ plugins {
 }
 
 group "com.roshka.sifen"
-version "0.2.99"
+version "0.3.01"
 
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
@@ -63,6 +63,11 @@ publishing {
                         id = "martinzarza"
                         name = "Martin Zarza"
                         email = "mzarza99@gmail.com"
+                    }
+                    developer {
+                        id = "rickspider"
+                        name = "Ricardo Gonzalez"
+                        email = "ricardo.rgi1989@gmail.com"
                     }
                 }
                 scm {
