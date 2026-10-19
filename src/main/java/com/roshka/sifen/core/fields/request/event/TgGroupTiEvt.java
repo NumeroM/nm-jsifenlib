@@ -16,6 +16,7 @@ public class TgGroupTiEvt extends SifenObjectBase {
     private TrGeVeDisconf rGeVeDisconf;
     private TrGeVeDescon rGeVeDescon;
     private TrGeVeTr rGeVeTr;
+    private TrGEveNom rGEveNom;
 
     // Automáticos
     private TrGeVeRetAce rGeVeRetAce;
@@ -49,6 +50,9 @@ public class TgGroupTiEvt extends SifenObjectBase {
 
         } else if (this.rGeVeTr != null) {
             this.rGeVeTr.setupSOAPElements(gGroupTiEvt);
+            
+        } else if (this.rGEveNom != null){
+            this.rGEveNom.setupSOAPElements(gGroupTiEvt);
         }
     }
 
@@ -96,6 +100,10 @@ public class TgGroupTiEvt extends SifenObjectBase {
                 break;
             case "rGeVeRem":
                 this.rGeVeRem = SifenObjectFactory.getFromNode(value, TrGeVeRem.class);
+                break;
+                
+            case "gGEveNom":
+                this.rGEveNom = SifenObjectFactory.getFromNode(value, TrGEveNom.class);
                 break;
         }
     }
@@ -183,4 +191,14 @@ public class TgGroupTiEvt extends SifenObjectBase {
     public TrGeVeRem getrGeVeRem() {
         return rGeVeRem;
     }
+
+    public TrGEveNom getrGEveNom() {
+        return rGEveNom;
+    }
+
+    public void setrGEveNom(TrGEveNom rGEveNom) {
+        this.rGEveNom = rGEveNom;
+    }
+    
+    
 }
