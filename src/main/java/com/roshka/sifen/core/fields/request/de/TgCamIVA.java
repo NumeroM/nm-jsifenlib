@@ -33,13 +33,15 @@ public class TgCamIVA extends SifenObjectBase {
         BigDecimal hundred = BigDecimal.valueOf(100);
         //BigDecimal propIVA = this.dPropIVA.divide(hundred, scale, RoundingMode.HALF_UP);
         
-        int effectiveScale = (this.iAfecIVA.getVal() == TiAfecIVA.GRAVADO_PARCIAL.getVal()) ? 2 : scale;
-        BigDecimal propIVA = this.dPropIVA.divide(hundred, effectiveScale, RoundingMode.HALF_UP);
+        int scaleCaclulo = 6;
+        
+     //   int effectiveScale = (this.iAfecIVA.getVal() == TiAfecIVA.GRAVADO_PARCIAL.getVal()) ? 2 : scale;
+     //   BigDecimal propIVA = this.dPropIVA.divide(hundred, effectiveScale, RoundingMode.HALF_UP);
         
         if (this.iAfecIVA.getVal() == TiAfecIVA.GRAVADO.getVal() || this.iAfecIVA.getVal() == TiAfecIVA.GRAVADO_PARCIAL.getVal()) {
             
-            this.dBasGravIVA = (dTotOpeItem.multiply(hundred).multiply(dPropIVA)).divide((dTasaIVA.multiply(dPropIVA)).add(BigDecimal.valueOf(10000)),scale, RoundingMode.HALF_UP);
-            this.dLiqIVAItem = this.dTasaIVA.divide(hundred).multiply(this.dBasGravIVA).setScale(scale, RoundingMode.HALF_UP);
+            this.dBasGravIVA = (dTotOpeItem.multiply(hundred).multiply(dPropIVA)).divide((dTasaIVA.multiply(dPropIVA)).add(BigDecimal.valueOf(10000)),scaleCaclulo, RoundingMode.HALF_UP);
+            this.dLiqIVAItem = this.dTasaIVA.divide(hundred).multiply(this.dBasGravIVA).setScale(scaleCaclulo, RoundingMode.HALF_UP);
           
              /* if (this.dTasaIVA.equals(BigDecimal.valueOf(10))) {
                // this.dBasGravIVA = dTotOpeItem.multiply(propIVA).divide(BigDecimal.valueOf(1.1), scale, RoundingMode.HALF_UP);
@@ -63,7 +65,7 @@ public class TgCamIVA extends SifenObjectBase {
             if (this.iAfecIVA.getVal() == 4) {
                 // Actualización: https://ekuatia.set.gov.py/portal/ekuatia/detail?content-id=/repository/collaboration/sites/ekuatia/documents/documentacion/documentacion-tecnica/NT_E_KUATIA_013_MT_V150.pdf
                 // E737 = [100 * EA008 * (100 – E733)] / [10000 + (E734 * E733)]
-                this.dBasExe = (dTotOpeItem.multiply(hundred.subtract(dPropIVA)).multiply(hundred)).divide((this.dTasaIVA.multiply(dPropIVA)).add(BigDecimal.valueOf(10000)), scale, RoundingMode.HALF_UP);
+                this.dBasExe = (dTotOpeItem.multiply(hundred.subtract(dPropIVA)).multiply(hundred)).divide((this.dTasaIVA.multiply(dPropIVA)).add(BigDecimal.valueOf(10000)), scaleCaclulo, RoundingMode.HALF_UP);
             } else {
                 this.dBasExe = BigDecimal.valueOf(0);
             }

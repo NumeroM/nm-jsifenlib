@@ -107,7 +107,7 @@ public class TgTotSub extends SifenObjectBase {
             }
 
             if (iTiDE.getVal() == 4)
-                this.dTotOpe = this.dTotOpe.add(dTotOpeItem);
+                this.dTotOpe = this.dTotOpe.add(dTotOpeItem).setScale(scale,RoundingMode.HALF_UP);
 
             this.dTotDesc = this.dTotDesc.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdDescItem().multiply(gCamItem.getdCantProSer()), BigDecimal.ZERO));
             this.dTotDescGlotem = this.dTotDescGlotem.add(SifenUtil.coalesce(gCamItem.getgValorItem().getgValorRestaItem().getdDescGloItem().multiply(gCamItem.getdCantProSer()), BigDecimal.ZERO));
@@ -120,7 +120,7 @@ public class TgTotSub extends SifenObjectBase {
         }
 
         if (iTiDE.getVal() != 4 && (iTImp.getVal() == 1 || iTImp.getVal() == 3 || iTImp.getVal() == 4 || iTImp.getVal() == 5)) {
-            this.dTotOpe = this.dSub10.add(this.dSub5).add(this.dSubExo).add(this.dSubExe);
+            this.dTotOpe = this.dSub10.add(this.dSub5).add(this.dSubExo).add(this.dSubExe).setScale(scale,RoundingMode.HALF_UP);
         }
         this.dDescTotal = this.dTotDesc.add(this.dTotDescGlotem);
         this.dPorcDescTotal = this.dTotDescGlotem.multiply(BigDecimal.valueOf(100)).divide(this.dTotOpe.add(this.dDescTotal), 2, RoundingMode.HALF_UP);
@@ -128,7 +128,7 @@ public class TgTotSub extends SifenObjectBase {
         if (this.redon){
             this.dRedon = RedondeoUtil.redondeoOficialSET(cMoneOpe, this.dTotOpe);
         }
-        this.dTotGralOpe = this.dTotOpe.subtract(this.dRedon).add(SifenUtil.coalesce(this.dComi, BigDecimal.ZERO));
+        this.dTotGralOpe = this.dTotOpe.subtract(this.dRedon).add(SifenUtil.coalesce(this.dComi, BigDecimal.ZERO)).setScale(scale,RoundingMode.HALF_UP);
         this.dRedon = this.dRedon.abs();
 
         if (this.dComi != null) {
